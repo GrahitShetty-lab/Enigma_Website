@@ -2367,6 +2367,12 @@ img {
 /* ---------- Tablet (≤ 900px) ---------- */
 @media (max-width: 900px) {
 
+  /* Prevent hero content cutoff on height-constrained mobile screens */
+  .hero {
+    min-height: auto;
+    padding: 120px 0 80px 0;
+  }
+
   /* Hero — single column, centered alignment */
   .hero-split-container {
     grid-template-columns: 1fr;
@@ -2825,7 +2831,15 @@ img {
   .countdown-console,
   .faq-item {
     backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
+  }
+}
+
+/* ---------- Small-to-Mid Mobile (≤ 520px) ---------- */
+@media (max-width: 520px) {
+  /* Stack highlights into a clean single column */
+  .staggered-highlights {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -2897,11 +2911,7 @@ img {
     font-size: 0.62rem;
   }
 
-  /* Highlight stats — single column */
-  .staggered-highlights {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+
 
   /* Section titles */
   .asymmetric-header .section-title {
