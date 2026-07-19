@@ -388,14 +388,16 @@ img {
   align-items: center;
 }
 
-.csi-logo-svg {
+.csi-logo-img {
+  height: 38px;
+  width: auto;
   display: block;
-  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.4));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
   transition: transform var(--transition-fast);
 }
 
-.nav-logo:hover .csi-logo-svg {
-  transform: rotate(-10deg) scale(1.08);
+.nav-logo:hover .csi-logo-img {
+  transform: scale(1.05);
 }
 
 .csi-divider {
@@ -597,7 +599,7 @@ img {
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 120px 40px 40px 40px; /* Added top padding to prevent fixed navbar overlaps on desktop */
   text-align: left;
   z-index: 2;
   position: relative;
@@ -633,7 +635,7 @@ img {
 /* Hero Organizer Subtitle Badge */
 .hero-organizer-badge {
   font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 2.5vw, 0.82rem);
+  font-size: clamp(0.65rem, 2.2vw, 0.8rem);
   color: var(--purple-light);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -642,9 +644,14 @@ img {
   display: inline-block;
   background: rgba(155, 89, 208, 0.08);
   border: 1px solid rgba(155, 89, 208, 0.2);
-  padding: 4px 14px;
+  padding: 6px 14px;
   border-radius: 4px;
   text-shadow: 0 0 4px rgba(155, 89, 208, 0.2);
+  max-width: 100%;
+  white-space: normal; /* Wrap text on narrow screens instead of popping out */
+  word-wrap: break-word;
+  line-height: 1.4;
+  box-sizing: border-box;
 }
 
 .hero-title {
@@ -719,10 +726,9 @@ img {
 
 /* Event Metadata Console (Highlights main/important details) */
 .hero-metadata-console {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: rgba(21, 21, 25, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -732,23 +738,24 @@ img {
   margin-top: 24px;
   margin-bottom: 24px;
   max-width: 440px;
+  width: 100%;
   text-align: left;
   font-family: var(--font-mono);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 .console-item {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  font-size: 0.8rem;
+  align-items: center;
+  font-size: 0.82rem;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
   padding-bottom: 8px;
 }
 
-/* Remove dashed border on the bottom grid row elements of the 6-item layout */
-.console-item:nth-child(5),
-.console-item:nth-child(6) {
+/* Remove dashed border on the last element of the list layout */
+.console-item:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -2636,6 +2643,10 @@ img {
 
   :root {
     --section-padding: 72px 0;
+  }
+
+  .csi-logo-img {
+    height: 28px;
   }
 
   /* Navbar — hamburger */
