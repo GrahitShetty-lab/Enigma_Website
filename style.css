@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -1779,162 +1780,9 @@ img {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   RESPONSIVE — Tablet (≤ 900px)
-   ========================================================================== */
-@media (max-width: 900px) {
-  .hero-split-container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 0 24px;
-    margin-top: 80px;
-  }
 
-  .hero-right-col {
-    margin-top: 0;
-    border-left: none;
-    border-top: 1px dashed rgba(255, 255, 255, 0.05);
-    padding-left: 0;
-    padding-top: 24px;
-  }
 
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
 
-  .staggered-highlights {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding-top: 0;
-  }
-
-  /* Reset staggered offsets on mobile/tablet to avoid overlapping gaps */
-  .staggered-highlights .card-offset-1,
-  .staggered-highlights .card-offset-2,
-  .staggered-highlights .card-offset-3,
-  .staggered-highlights .card-offset-4 {
-    transform: translateY(0);
-  }
-
-  .staggered-highlights .card-offset-1:hover,
-  .staggered-highlights .card-offset-2:hover,
-  .staggered-highlights .card-offset-3:hover,
-  .staggered-highlights .card-offset-4:hover {
-    transform: translateY(-4px) scale(1.02);
-  }
-
-  .asymmetric-tracks-grid {
-    grid-template-columns: 1fr;
-    max-width: 580px;
-  }
-
-  .prize-split-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* ==========================================================================
-   RESPONSIVE — Mobile (≤ 640px)
-   ========================================================================== */
-@media (max-width: 640px) {
-  :root {
-    --section-padding: 72px 0;
-  }
-
-  /* Navbar — hamburger menu */
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: rgba(10, 10, 12, 0.97);
-    backdrop-filter: blur(16px);
-    flex-direction: column;
-    justify-content: center;
-    gap: 28px;
-    transition: right var(--transition-medium);
-    border-left: 1px solid rgba(107, 47, 160, 0.2);
-    z-index: 999;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
-  .nav-links a {
-    font-size: 1.1rem;
-  }
-
-  /* Hero adjustments */
-  .hero-title {
-    font-size: clamp(2.6rem, 12vw, 4rem);
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    justify-content: center;
-  }
-
-  /* About highlights */
-  .staggered-highlights {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .highlight-card {
-    padding: 18px 12px;
-  }
-
-  .highlight-card .highlight-value {
-    font-size: 1.4rem;
-  }
-
-  /* Timeline */
-  .timeline {
-    padding-left: 30px;
-  }
-
-  .timeline::before {
-    left: 10px;
-  }
-
-  .timeline-item {
-    padding-left: 28px;
-  }
-
-  .timeline-item::before {
-    left: -26px;
-    width: 12px;
-    height: 12px;
-  }
-
-  /* Footer */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
 
 /* ==========================================================================
    OVERLAY for mobile nav (prevents interaction behind menu)
@@ -2225,34 +2073,7 @@ img {
   }
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .whatsapp-float {
-    bottom: 24px;
-    right: 24px;
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
-  }
-  .whatsapp-tooltip {
-    display: none !important;
-  }
 
-  /* Performance optimizations: disable floating particles and reduce backdrop blurs on mobile */
-  .hero-particles {
-    display: none !important;
-  }
-
-  .perk-featured-card,
-  .perk-terminal-window,
-  .navbar.scrolled,
-  .hero-metadata-console,
-  .whatsapp-float,
-  .custom-cursor-ring {
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-  }
-}
 
 /* ==========================================================================
    11. ADDITIVE INTERACTIVE FEATURES (Countdown, System Panel, FAQ, Pop reveals)
@@ -2536,5 +2357,592 @@ img {
   }
   .faq-content {
     transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   12. COMPREHENSIVE RESPONSIVE OVERHAUL
+   ========================================================================== */
+
+/* ---------- Tablet (≤ 900px) ---------- */
+@media (max-width: 900px) {
+
+  /* Hero — single column, centered alignment */
+  .hero-split-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 24px;
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  .hero-left-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-right-col {
+    margin-top: 0;
+    border-left: none;
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    padding: 24px 0 0 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-tagline {
+    text-align: center;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
+  /* Rotated coordinate label — unrotate on tablet */
+  .rotated-label {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 16px;
+    opacity: 0.4;
+  }
+
+  /* System panel widget — constrain and center */
+  .system-panel.console-widget {
+    max-width: 100%;
+    margin: 20px auto 0;
+  }
+
+  /* Countdown console — center and constrain */
+  .countdown-console {
+    max-width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  /* Hero metadata console — center */
+  .hero-metadata-console {
+    max-width: 420px;
+    margin: 0 auto 20px;
+  }
+
+  /* Asymmetric header — wrap on tablet */
+  .asymmetric-header {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .asymmetric-header .header-metadata {
+    width: 100%;
+    order: 3;
+  }
+
+  /* About grid */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .staggered-highlights {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding-top: 0;
+  }
+
+  .staggered-highlights .card-offset-1,
+  .staggered-highlights .card-offset-2,
+  .staggered-highlights .card-offset-3,
+  .staggered-highlights .card-offset-4 {
+    transform: translateY(0);
+  }
+
+  .staggered-highlights .card-offset-1:hover,
+  .staggered-highlights .card-offset-2:hover,
+  .staggered-highlights .card-offset-3:hover,
+  .staggered-highlights .card-offset-4:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  /* Tracks grid */
+  .asymmetric-tracks-grid {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+  }
+
+  .terminal-card.card-narrow {
+    margin-top: 0;
+  }
+
+  /* Prize split layout */
+  .prize-split-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .prize-spotlight {
+    text-align: center;
+  }
+
+  /* Perks split layout */
+  .perks-split-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Contact grid */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* FAQ accordion */
+  .faq-accordion-container {
+    max-width: 100%;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Mobile (≤ 640px) ---------- */
+@media (max-width: 640px) {
+
+  :root {
+    --section-padding: 72px 0;
+  }
+
+  /* Navbar — hamburger */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 12, 0.97);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    transition: right var(--transition-medium);
+    border-left: 1px solid rgba(107, 47, 160, 0.2);
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  /* Hero adjustments */
+  .hero-split-container {
+    padding: 0 16px;
+    margin-top: 70px;
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 14vw, 3.6rem);
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  /* Hero metadata console — stay 2x2 but tighter */
+  .hero-metadata-console {
+    max-width: 100%;
+    gap: 10px 16px;
+    padding: 14px 16px;
+    font-size: 0.72rem;
+  }
+
+  .console-item {
+    font-size: 0.72rem;
+  }
+
+  /* System panel — full width, tighter padding */
+  .system-panel.console-widget {
+    padding: 12px 14px;
+    margin-top: 16px;
+  }
+
+  .system-panel-header {
+    font-size: 0.65rem;
+  }
+
+  .system-panel-body {
+    font-size: 0.68rem;
+  }
+
+  /* Countdown — smaller digits */
+  .countdown-console {
+    padding: 12px 14px;
+    margin-bottom: 16px;
+  }
+
+  .countdown-header {
+    font-size: 0.65rem;
+    margin-bottom: 8px;
+  }
+
+  .time-num {
+    font-size: 1.4rem;
+  }
+
+  .time-lbl {
+    font-size: 0.5rem;
+  }
+
+  .time-divider {
+    font-size: 1.1rem;
+    padding: 0 2px;
+  }
+
+  /* Asymmetric header — stack vertically on mobile */
+  .asymmetric-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .asymmetric-header .section-number {
+    font-size: 0.9rem;
+  }
+
+  .asymmetric-header .section-title {
+    font-size: clamp(1.4rem, 6vw, 2rem) !important;
+  }
+
+  .asymmetric-header .header-metadata {
+    font-size: 0.6rem;
+  }
+
+  /* Tech header tags — scale down */
+  .tech-header-tag {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    margin-right: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* Section subtitle */
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 36px;
+  }
+
+  /* About highlights — 2 columns tighter */
+  .staggered-highlights {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .highlight-card {
+    padding: 16px 10px;
+  }
+
+  .highlight-card .highlight-value {
+    font-size: 1.3rem;
+  }
+
+  .highlight-card .highlight-label {
+    font-size: 0.7rem;
+  }
+
+  /* Track cards — full width, reduce hover shift */
+  .terminal-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .terminal-body {
+    padding: 16px;
+  }
+
+  .code-gutter {
+    display: none;
+  }
+
+  /* Prize amount — scale down */
+  .prize-amount {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .prize-tier .amount {
+    font-size: 1.4rem;
+  }
+
+  .prize-sub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-tier-content h4 {
+    font-size: 1.1rem;
+  }
+
+  /* Perks — featured cards tighter */
+  .perk-featured-card {
+    padding: 22px 18px;
+  }
+
+  .perk-featured-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .perk-logs-body {
+    padding: 16px;
+    font-size: 0.72rem;
+  }
+
+  .log-row {
+    grid-template-columns: auto 1fr;
+    gap: 4px 8px;
+  }
+
+  .log-text {
+    grid-column: 1 / span 2;
+  }
+
+  .log-label,
+  .log-divider {
+    display: none;
+  }
+
+  /* Timeline — tighter left offset */
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item {
+    padding-left: 28px;
+  }
+
+  .timeline-item::before {
+    left: -26px;
+    width: 12px;
+    height: 12px;
+  }
+
+  /* FAQ — tighter padding */
+  .faq-trigger {
+    padding: 16px 18px;
+    font-size: 0.92rem;
+  }
+
+  .faq-content-inner {
+    padding: 0 18px 16px 18px;
+    font-size: 0.85rem;
+  }
+
+  /* Contact links — allow text wrapping */
+  .contact-link span {
+    word-break: break-all;
+  }
+
+  .contact-info h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Social links — centered */
+  .social-links {
+    justify-content: center;
+  }
+
+  /* Footer — single column */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-col a {
+    justify-content: center;
+  }
+
+  /* WhatsApp float — adjust */
+  .whatsapp-float {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .whatsapp-tooltip {
+    display: none !important;
+  }
+
+  /* Disable particles and reduce blurs */
+  .hero-particles {
+    display: none !important;
+  }
+
+  .perk-featured-card,
+  .perk-terminal-window,
+  .navbar.scrolled,
+  .hero-metadata-console,
+  .whatsapp-float,
+  .custom-cursor-ring,
+  .system-panel.console-widget,
+  .countdown-console,
+  .faq-item {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+}
+
+/* ---------- Small Mobile (≤ 400px) ---------- */
+@media (max-width: 400px) {
+
+  :root {
+    --section-padding: 56px 0;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero-split-container {
+    padding: 0 12px;
+    margin-top: 60px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 16vw, 3rem);
+  }
+
+  .hero-tagline {
+    font-size: 0.78rem;
+  }
+
+  /* Metadata console — stack into single column */
+  .hero-metadata-console {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .console-item {
+    font-size: 0.68rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 6px;
+  }
+
+  .console-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Countdown — compact */
+  .time-num {
+    font-size: 1.1rem;
+  }
+
+  .time-lbl {
+    font-size: 0.45rem;
+  }
+
+  .time-divider {
+    font-size: 0.9rem;
+  }
+
+  .countdown-display {
+    padding: 6px 4px;
+  }
+
+  /* System panel */
+  .system-panel.console-widget {
+    padding: 10px 12px;
+  }
+
+  .system-panel-body {
+    font-size: 0.62rem;
+  }
+
+  /* Highlight stats — single column */
+  .staggered-highlights {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Section titles */
+  .asymmetric-header .section-title {
+    font-size: clamp(1.2rem, 7vw, 1.6rem) !important;
+  }
+
+  .tech-header-tag {
+    font-size: 0.5rem;
+    padding: 2px 6px;
+    margin-right: 6px;
+    display: block;
+    width: fit-content;
+    margin-bottom: 6px;
+  }
+
+  /* Prize amount */
+  .prize-amount {
+    font-size: clamp(2rem, 14vw, 3rem);
+  }
+
+  /* FAQ items */
+  .faq-trigger {
+    padding: 14px 14px;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .faq-content-inner {
+    padding: 0 14px 14px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Contact form */
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
+
+  /* Footer */
+  .footer-brand p {
+    font-size: 0.82rem;
   }
 }
