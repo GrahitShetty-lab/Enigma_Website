@@ -123,7 +123,6 @@ img {
   overflow: hidden;
 }
 
-/* The container fills the entire section and sits behind content */
 .video-bg-container {
   position: absolute;
   top: 0;
@@ -133,6 +132,8 @@ img {
   z-index: 0;
   overflow: hidden;
   pointer-events: none; /* Clicks pass through to buttons/links */
+  background: var(--black) url('hero-fallback.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 /* The local HTML5 video element — styled to fill the container perfectly */
@@ -143,7 +144,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  transform: scale(1.12); /* Slightly zooms the video to push corner watermarks off-screen/out of visible bounds */
+  transform: scale(1.35); /* Increased zoom to zoom in more on the center of the video */
   transform-origin: center center;
 }
 
@@ -201,8 +202,9 @@ img {
 .rotated-label {
   position: absolute;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  color: var(--green-toxic);
+  opacity: 0.5;
   transform: rotate(-90deg);
   transform-origin: left top;
   white-space: nowrap;
@@ -572,7 +574,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 100px; /* Offset column downwards for editorial styling */
+  margin-top: 30px; /* Reduced offset to raise register buttons higher */
   padding: 24px;
   border-left: 1px dashed rgba(255, 255, 255, 0.05);
 }
@@ -662,13 +664,14 @@ img {
 .hero-metadata-console {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 20px;
+  grid-template-rows: auto auto;
+  gap: 16px 32px;
   background: rgba(21, 21, 25, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(57, 255, 20, 0.15);
   border-radius: 8px;
-  padding: 16px 20px;
+  padding: 20px 24px;
   margin-bottom: 24px;
   text-align: left;
   font-family: var(--font-mono);
@@ -678,13 +681,15 @@ img {
 .console-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   font-size: 0.8rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
 }
 
-.console-item:nth-last-child(-n+2) {
+/* Remove dashed border on the bottom grid row elements */
+.console-item:nth-child(3),
+.console-item:nth-child(4) {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -692,27 +697,14 @@ img {
 .console-key {
   color: var(--white-muted);
   font-weight: 500;
+  margin-right: 12px;
 }
 
 .console-val {
   color: var(--green-toxic);
   font-weight: 600;
   text-shadow: 0 0 6px rgba(57, 255, 20, 0.2);
-}
-
-@media (max-width: 480px) {
-  .hero-metadata-console {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .console-item {
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-    padding-bottom: 6px;
-  }
-  .console-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
+  white-space: nowrap;
 }
 
 /* CTA Buttons */
@@ -1975,13 +1967,64 @@ img {
   *,
   *::before,
   *::after {
+    animation-delay: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
   html {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable scroll-triggered fade/slide-in animations directly */
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Disable floating particles */
+  .hero-particles,
+  .particle {
+    display: none !important;
+    animation: none !important;
+  }
+
+  /* Disable text glitch/scanline effects on headings */
+  .hero-title {
+    animation: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Disable button animations on hover */
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-red:hover,
+  .btn::after {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Pause/hide the autoplay video background */
+  .video-bg {
+    display: none !important;
+  }
+
+  .video-bg-container {
+    background: var(--black) url('hero-fallback.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  /* Pause WhatsApp CTA float breathing pulse animation */
+  .whatsapp-float {
+    animation: none !important;
   }
 }
 
@@ -2060,34 +2103,28 @@ img {
   box-shadow: 0 0 12px rgba(155, 89, 208, 0.2);
 }
 
-/* Click Ripples */
+/* Click Ripples - Optimized using transform scale to prevent layout reflows */
 .cursor-ripple {
   position: fixed;
-  width: 8px;
-  height: 8px;
+  width: 68px;
+  height: 68px;
   border: 1px solid var(--green-toxic);
   border-radius: 50%;
-  margin-left: -4px;
-  margin-top: -4px;
   pointer-events: none;
   z-index: 9998;
+  transform: translate3d(-50%, -50%, 0) scale(0.1);
+  transform-origin: center center;
   animation: cursorRippleAnim 0.45s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 @keyframes cursorRippleAnim {
   0% {
-    width: 8px;
-    height: 8px;
-    margin-left: -4px;
-    margin-top: -4px;
+    transform: translate3d(-50%, -50%, 0) scale(0.1);
     opacity: 1;
     border-color: var(--green-toxic);
   }
   100% {
-    width: 68px;
-    height: 68px;
-    margin-left: -34px;
-    margin-top: -34px;
+    transform: translate3d(-50%, -50%, 0) scale(1);
     opacity: 0;
     border-color: var(--purple-light);
     box-shadow: 0 0 12px rgba(155, 89, 208, 0.15);
@@ -2104,5 +2141,400 @@ img {
   html.custom-cursor-active input,
   html.custom-cursor-active textarea {
     cursor: none !important;
+  }
+}
+
+/* ==========================================================================
+   10. FLOATING WHATSAPP CTA BUTTON
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  background: rgba(21, 21, 25, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(57, 255, 20, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-toxic);
+  font-size: 1.8rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(57, 255, 20, 0.1);
+  z-index: 10005; /* Set higher than all other fixed elements (cursor at 10000, navbar at 1000) */
+  transition: 
+    transform var(--transition-fast), 
+    border-color var(--transition-fast), 
+    box-shadow var(--transition-fast),
+    color var(--transition-fast);
+  animation: whatsappPulse 3s infinite alternate ease-in-out;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  border-color: var(--green-toxic);
+  box-shadow: 0 8px 30px rgba(57, 255, 20, 0.3);
+  color: var(--white);
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 70px;
+  background: rgba(10, 10, 12, 0.95);
+  border: 1px solid rgba(155, 89, 208, 0.3);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: var(--white-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: rgba(10, 10, 12, 0.95);
+  border-right: 1px solid rgba(155, 89, 208, 0.3);
+  border-top: 1px solid rgba(155, 89, 208, 0.3);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 8px rgba(57, 255, 20, 0.15);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(57, 255, 20, 0.4);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+  .whatsapp-tooltip {
+    display: none !important;
+  }
+
+  /* Performance optimizations: disable floating particles and reduce backdrop blurs on mobile */
+  .hero-particles {
+    display: none !important;
+  }
+
+  .perk-featured-card,
+  .perk-terminal-window,
+  .navbar.scrolled,
+  .hero-metadata-console,
+  .whatsapp-float,
+  .custom-cursor-ring {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+}
+
+/* ==========================================================================
+   11. ADDITIVE INTERACTIVE FEATURES (Countdown, System Panel, FAQ, Pop reveals)
+   ========================================================================== */
+
+/* ---------- Scroll-Triggered Reveal Pop Animations ---------- */
+.reveal-pop {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 
+    opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal-pop.popped {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- System Panel Status Display ---------- */
+.system-panel.console-widget {
+  background: rgba(21, 21, 25, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(155, 89, 208, 0.15);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 24px;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  border-left: 3px solid var(--purple-light);
+  position: relative;
+  z-index: 2;
+}
+
+.system-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.system-dot-pulsing {
+  color: var(--green-toxic);
+  animation: statusPulse 1.5s infinite alternate ease-in-out;
+  font-weight: bold;
+}
+
+.system-title {
+  color: var(--white-muted);
+  letter-spacing: 1px;
+}
+
+.system-panel-body {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.system-line {
+  margin-bottom: 6px;
+  color: var(--white-muted);
+}
+
+.system-line .lbl {
+  color: var(--white-muted);
+  margin-right: 8px;
+}
+
+.system-line .val {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.system-line .val.text-gold {
+  color: #ffb86c;
+  text-shadow: 0 0 6px rgba(255, 184, 108, 0.15);
+}
+
+.blinking-cursor {
+  font-weight: bold;
+  animation: cursorBlink 1s step-end infinite;
+  color: var(--green-toxic);
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes statusPulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; text-shadow: 0 0 8px var(--green-glow); }
+}
+
+/* ---------- Live Countdown Timer Widget ---------- */
+.countdown-console {
+  background: rgba(21, 21, 25, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(57, 255, 20, 0.15);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  max-width: 440px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.countdown-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--white-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-header i {
+  color: var(--green-toxic);
+}
+
+.countdown-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: rgba(10, 10, 12, 0.6);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.time-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-toxic);
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.time-lbl {
+  font-size: 0.6rem;
+  color: var(--white-muted);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.time-divider {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white-muted);
+  padding: 0 4px;
+  margin-top: -14px;
+  animation: dividerFlash 1s infinite step-end;
+}
+
+@keyframes dividerFlash {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ---------- FAQ Section Accordion ---------- */
+.faq-section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.faq-guide-h {
+  top: 0;
+  border-top: 1px dashed rgba(107, 47, 160, 0.08);
+}
+
+.faq-accordion-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.faq-item {
+  background: rgba(21, 21, 25, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: rgba(155, 89, 208, 0.3);
+  box-shadow: 0 4px 20px rgba(155, 89, 208, 0.05);
+}
+
+.faq-item.active {
+  border-color: rgba(57, 255, 20, 0.35);
+  box-shadow: 0 4px 24px rgba(57, 255, 20, 0.06);
+}
+
+.faq-trigger {
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  transition: color var(--transition-fast);
+}
+
+.faq-trigger:hover {
+  color: var(--green-toxic);
+}
+
+.faq-item.active .faq-trigger {
+  color: var(--green-toxic);
+}
+
+.faq-q-text {
+  padding-right: 16px;
+}
+
+.faq-icon-toggle {
+  font-size: 0.9rem;
+  color: var(--white-muted);
+  transition: transform 0.3s ease, color var(--transition-fast);
+}
+
+.faq-item.active .faq-icon-toggle {
+  transform: rotate(45deg);
+  color: var(--green-toxic);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-content-inner {
+  padding: 0 24px 20px 24px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--white-muted);
+  border-top: 1px dashed rgba(255, 255, 255, 0.03);
+  padding-top: 12px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-pop {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .system-dot-pulsing,
+  .blinking-cursor,
+  .time-divider {
+    animation: none !important;
+  }
+  .faq-content {
+    transition: none !important;
   }
 }

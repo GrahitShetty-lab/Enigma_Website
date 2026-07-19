@@ -42,6 +42,7 @@
         <a href="#prizes">Prizes</a>
         <a href="#perks">Perks</a>
         <a href="#timeline">Timeline</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a href="#register" class="btn btn-primary" style="padding:10px 24px; font-size:0.8rem;">Register</a>
       </nav>
@@ -59,7 +60,7 @@
   <section class="hero has-video-bg" id="hero">
     <!-- Local video background (Hero.mp4) -->
     <div class="video-bg-container" aria-hidden="true">
-      <video class="video-bg" autoplay loop muted playsinline>
+      <video class="video-bg" autoplay loop muted playsinline poster="hero-fallback.jpg">
         <source src="Hero.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
@@ -95,7 +96,22 @@
           <span class="version-tag">5.0</span>
         </h1>
         <p class="hero-tagline">// DECODE. BUILD. DISRUPT.</p>
-        <div class="rotated-label" aria-hidden="true">[COORD: 28.61 // 77.20]</div>
+        
+        <!-- System Panel Status Widget -->
+        <div class="system-panel console-widget reveal stagger-1">
+          <div class="system-panel-header">
+            <span class="system-dot-pulsing">[• ONLINE]</span>
+            <span class="system-title">SYS_STATUS_READOUT</span>
+          </div>
+          <div class="system-panel-body monospace">
+            <div class="system-line"><span class="lbl">> STATUS:</span> <span class="val text-gold">REGISTRATIONS_OPEN</span></div>
+            <div class="system-line"><span class="lbl">> TRACKS:</span> <span class="val">2_ACTIVE [FIN / HEALTH]</span></div>
+            <div class="system-line"><span class="lbl">> PRIZE:</span> <span class="val">₹25,000 [VAL_MATRIX]</span></div>
+            <div class="system-line"><span class="lbl">> SLOTS:</span> <span class="val">LIMITED [CSI_REQ]</span><span class="blinking-cursor">_</span></div>
+          </div>
+        </div>
+
+        <div class="rotated-label" aria-hidden="true">[COORD: 19.0433 // 73.0230]</div>
       </div>
 
       <!-- Right Column: Offset Editorial Block -->
@@ -108,7 +124,7 @@
           </div>
           <div class="console-item">
             <span class="console-key">VENUE:</span>
-            <span class="console-val">SIES GST, NERUL</span>
+            <span class="console-val">SIES GST</span>
           </div>
           <div class="console-item">
             <span class="console-key">DURATION:</span>
@@ -119,9 +135,36 @@
             <span class="console-val">4 MEMBERS</span>
           </div>
         </div>
-        <p class="hero-description reveal stagger-2">
-          A 12-hour sprint by the Computer Society of India. Challenge your team to build high-stakes solutions across <strong>FinTech</strong> and <strong>HealthTech</strong>. Compete for a ₹25,000 prize matrix.
-        </p>
+
+
+        <!-- Live Countdown Timer Widget -->
+        <div class="countdown-console reveal stagger-3">
+          <div class="countdown-header">
+            <i class="fas fa-history"></i> <span class="mono-badge">TIME_UNTIL_LAUNCH</span>
+          </div>
+          <div class="countdown-display monospace" id="countdownTimer">
+            <div class="time-block">
+              <span class="time-num" id="daysVal">00</span>
+              <span class="time-lbl">DAYS</span>
+            </div>
+            <span class="time-divider">:</span>
+            <div class="time-block">
+              <span class="time-num" id="hoursVal">00</span>
+              <span class="time-lbl">HRS</span>
+            </div>
+            <span class="time-divider">:</span>
+            <div class="time-block">
+              <span class="time-num" id="minutesVal">00</span>
+              <span class="time-lbl">MINS</span>
+            </div>
+            <span class="time-divider">:</span>
+            <div class="time-block">
+              <span class="time-num" id="secondsVal">00</span>
+              <span class="time-lbl">SECS</span>
+            </div>
+          </div>
+        </div>
+
         <div class="hero-ctas">
           <a href="#register" class="btn btn-primary" id="heroRegisterBtn">
             <i class="fas fa-rocket"></i> Register Now
@@ -143,7 +186,7 @@
       <!-- Asymmetric Section Header -->
       <div class="asymmetric-header">
         <span class="section-number">01 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">&lt;/&gt;</span> About Enigma 5.0</h2>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">&lt;/&gt;</span> About Enigma 5.0</h2>
         <span class="header-metadata">[SYS_VAL: ACTIVE_CORE]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -205,7 +248,7 @@
     <div class="container">
       <div class="asymmetric-header">
         <span class="section-number">02 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">_FILE_TABS</span> Hackathon Tracks</h2>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">_FILE_TABS</span> Hackathon Tracks</h2>
         <span class="header-metadata">[SYS_TRACK: RUNNING]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -296,7 +339,7 @@
     <div class="container">
       <div class="asymmetric-header">
         <span class="section-number">03 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">[VAL_MATRIX]</span> Prize Pool</h2>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">[VAL_MATRIX]</span> Prize Pool</h2>
         <span class="header-metadata">[SYS_PRIZES: SET]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -307,7 +350,7 @@
         <!-- Left Side: Large spotlight with counter -->
         <div class="prize-spotlight-column reveal">
           <div class="prize-spotlight">
-            <div class="prize-amount" aria-label="Prize pool of 25,000 rupees">₹0</div>
+            <div class="prize-amount reveal-pop" aria-label="Prize pool of 25,000 rupees">₹0</div>
             <p class="prize-label">Total Prize Pool</p>
             <div class="prize-sub-label">// DISTRIBUTED_REWARDS_MATRIX</div>
           </div>
@@ -355,7 +398,7 @@
     <div class="container">
       <div class="asymmetric-header">
         <span class="section-number">04 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">[SYS_PERKS]</span> Event Perks</h2>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">[SYS_PERKS]</span> Event Perks</h2>
         <span class="header-metadata">[SYS_PERKS: LOADED]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -371,8 +414,8 @@
               <i class="fas fa-coins text-gold"></i>
               <span class="mono-badge">[VAL_MATRIX]</span>
             </div>
-            <h3>Cash Prize Pool</h3>
-            <p>Compete for cash rewards worth ₹25,000 distributed across tracks.</p>
+            <h3>Cash Rewards</h3>
+            <p>Top-performing teams across both tracks are eligible to compete for cash rewards.</p>
           </div>
 
           <!-- Featured Perk 2: Certification -->
@@ -475,7 +518,7 @@
     <div class="container">
       <div class="asymmetric-header">
         <span class="section-number">05 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">{LOGS}</span> Event Timeline</h2>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">{LOGS}</span> Event Timeline</h2>
         <span class="header-metadata">[SYS_TIME: SEQUENCE]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -528,12 +571,101 @@
     </div>
   </section>
 
+  <!-- ======================= FAQ SECTION ======================= -->
+  <section class="faq-section" id="faq">
+    <div class="layout-guide-line horizontal faq-guide-h" aria-hidden="true"></div>
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">06 //</span>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">[SYS_FAQ]</span> Frequently Asked Questions</h2>
+        <span class="header-metadata">[SYS_FAQ: SECURE_COMMS]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Got questions? Find instant answers about registration, team size, logistics, and tracks here.
+      </p>
+
+      <div class="faq-accordion-container reveal stagger-2">
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">Who can participate in Enigma 5.0?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              Any undergraduate student currently enrolled in any recognized college or university is eligible to participate. Teams from different colleges are welcome too!
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">What is the team size requirement?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              To keep the playing field balanced and competitive, teams must consist of exactly 4 members. No more and no less.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">Is there a registration fee?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              No, registration and participation in Enigma 5.0 is completely free of charge.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">What should I bring to the hackathon?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              You must bring your college student ID card, laptops, chargers, extension boxes, and any hardware/software tools you plan to use.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">Will food and refreshments be provided?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              Yes, high-energy meals, caffeine boosters, snacks, and midnight refreshments are fully sponsored and provided for all active hacking teams throughout the 12-hour marathon.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q-text">What are the hackathon tracks?</span>
+            <span class="faq-icon-toggle"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-content-inner">
+              This edition centers on two critical pillars: <strong>FinTech</strong> (decentralized finance, ledger innovations, payments APIs) and <strong>HealthTech</strong> (MedTech devices, remote health assistance, health analytics, smart records).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ======================= CONTACT SECTION ======================= -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="asymmetric-header">
-        <span class="section-number">06 //</span>
-        <h2 class="section-title reveal"><span class="tech-header-tag">COMMS_EST</span> Contact the Team</h2>
+        <span class="section-number">07 //</span>
+        <h2 class="section-title reveal-pop"><span class="tech-header-tag">COMMS_EST</span> Contact the Team</h2>
         <span class="header-metadata">[SYS_COMMS: CONNECTED]</span>
       </div>
       <p class="section-subtitle reveal stagger-1">
@@ -632,6 +764,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp CTA -->
+  <a href="https://wa.me/919321377525?text=Hi%2C%20I%20want%20to%20register%20and%20want%20more%20info%20on%20Enigma%205.0" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us</span>
+  </a>
 
   <script src="script.js"></script>
 

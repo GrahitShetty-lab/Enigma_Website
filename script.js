@@ -329,4 +329,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 9. Video Background Safeguard
+  const bgVideo = document.querySelector('.video-bg');
+  if (bgVideo) {
+    bgVideo.addEventListener('error', () => {
+      console.warn('Video background failed to load. Falling back to poster.');
+      bgVideo.style.display = 'none';
+      bgVideo.classList.add('video-failed');
+    });
+  }
+
+  // 10. Live Countdown Timer
+  const targetDate = new Date('September 13, 2026 09:00:00').getTime();
+  const daysEl = document.getElementById('daysVal');
+  const hoursEl = document.getElementById('hoursVal');
+  const minsEl = document.getElementById('minutesVal');
+  const secsEl = document.getElementById('secondsVal');
+  const countdownTimerContainer = document.getElementById('countdownTimer');
+
+  if (daysEl && hoursEl && minsEl && secsEl) {
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        if (countdownTimerContainer) {
+          countdownTimerContainer.innerHTML = '<div style="color:var(--green-toxic); font-weight:600; letter-spacing:1.5px; font-size:1.1rem; width:100%; text-align:center; padding:10px 0; text-shadow:0 0 8px rgba(57,255,20,0.3)">[ EVENT LIVE NOW ]</div>';
+        }
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(minutes).padStart(2, '0');
+      secsEl.textContent = String(seconds).padStart(2, '0');
+    };
+
+    updateCountdown(); // Run once instantly
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  }
+
+  // 11. Scroll-Triggered Text Reveal Pop (Intersection Observer)
+  const revealPopElements = document.querySelectorAll('.reveal-pop');
+  if (revealPopElements.length > 0) {
+    const revealPopObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('popped');
+          observer.unobserve(entry.target); // Animate only once
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px' // Trigger slightly before fully entering
+    });
+
+    revealPopElements.forEach(el => revealPopObserver.observe(el));
+  }
+
+  // 12. FAQ Accordion Toggle
+  const faqTriggers = document.querySelectorAll('.faq-trigger');
+  faqTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const faqItem = trigger.closest('.faq-item');
+      const faqContent = faqItem.querySelector('.faq-content');
+      const isOpen = faqItem.classList.contains('active');
+
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          const content = item.querySelector('.faq-content');
+          if (content) content.style.maxHeight = null;
+          const trig = item.querySelector('.faq-trigger');
+          if (trig) trig.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        faqItem.classList.remove('active');
+        faqContent.style.maxHeight = null;
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        faqItem.classList.add('active');
+        faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
 });
