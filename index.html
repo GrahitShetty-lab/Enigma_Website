@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================================
+       ENIGMA 5.0 — CSI Hackathon Landing Page
+       Built with plain HTML, CSS, vanilla JS — no frameworks
+       ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Enigma 5.0 — A national-level hackathon by CSI (Computer Society of India). Two tracks: FinTech and HealthTech. ₹25,000 prize pool. Open to undergraduate teams." />
+  <meta name="keywords" content="hackathon, CSI, Computer Society of India, Enigma 5.0, FinTech, HealthTech, college hackathon" />
+  <title>Enigma 5.0 | CSI Hackathon — FinTech &amp; HealthTech</title>
+
+  <!-- Google Fonts — Space Grotesk (Display) + Inter (Body) + Fira Code (Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======================= MOBILE NAV OVERLAY ======================= -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="Enigma 5.0 Home">
+        ENIGMA<span>5.0</span>
+      </a>
+
+      <!-- Navigation links -->
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#prizes">Prizes</a>
+        <a href="#perks">Perks</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact</a>
+        <a href="#register" class="btn btn-primary" style="padding:10px 24px; font-size:0.8rem;">Register</a>
+      </nav>
+
+      <!-- Hamburger toggle (mobile) -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================= HERO SECTION ======================= -->
+  <section class="hero has-video-bg" id="hero">
+    <!-- Local video background (Hero.mp4) -->
+    <div class="video-bg-container" aria-hidden="true">
+      <video class="video-bg" autoplay loop muted playsinline>
+        <source src="Hero.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <!-- Floating particles (CSS animated) -->
+    <div class="hero-particles" aria-hidden="true">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Layout lines (asymmetrical guides) -->
+    <div class="layout-guide-line vertical hero-guide-1" aria-hidden="true"></div>
+    <div class="layout-guide-line horizontal hero-guide-2" aria-hidden="true"></div>
+
+    <div class="hero-split-container">
+      <!-- Left Column: Oversized Type & Version Tag -->
+      <div class="hero-left-col">
+        <div class="hero-badge">
+          <i class="fas fa-terminal"></i>&nbsp; <span class="mono-badge">CSI_INIT_LOGS // REQ_OK</span>
+        </div>
+        <h1 class="hero-title">
+          ENIGMA
+          <span class="version-tag">5.0</span>
+        </h1>
+        <p class="hero-tagline">// DECODE. BUILD. DISRUPT.</p>
+        <div class="rotated-label" aria-hidden="true">[COORD: 28.61 // 77.20]</div>
+      </div>
+
+      <!-- Right Column: Offset Editorial Block -->
+      <div class="hero-right-col">
+        <!-- Event Console Metadata Badge Grid -->
+        <div class="hero-metadata-console reveal stagger-1">
+          <div class="console-item">
+            <span class="console-key">DATE:</span>
+            <span class="console-val">SEP 13, 2026</span>
+          </div>
+          <div class="console-item">
+            <span class="console-key">VENUE:</span>
+            <span class="console-val">SIES GST, NERUL</span>
+          </div>
+          <div class="console-item">
+            <span class="console-key">DURATION:</span>
+            <span class="console-val">12 HRS</span>
+          </div>
+          <div class="console-item">
+            <span class="console-key">TEAM SIZE:</span>
+            <span class="console-val">4 MEMBERS</span>
+          </div>
+        </div>
+        <p class="hero-description reveal stagger-2">
+          A 12-hour sprint by the Computer Society of India. Challenge your team to build high-stakes solutions across <strong>FinTech</strong> and <strong>HealthTech</strong>. Compete for a ₹25,000 prize matrix.
+        </p>
+        <div class="hero-ctas">
+          <a href="#register" class="btn btn-primary" id="heroRegisterBtn">
+            <i class="fas fa-rocket"></i> Register Now
+          </a>
+          <a href="#timeline" class="btn btn-secondary" id="heroTimelineBtn">
+            <i class="fas fa-map"></i> System Timeline
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABOUT SECTION ======================= -->
+  <section class="about" id="about">
+    <!-- Asymmetric layout line -->
+    <div class="layout-guide-line horizontal about-guide" aria-hidden="true"></div>
+    
+    <div class="container">
+      <!-- Asymmetric Section Header -->
+      <div class="asymmetric-header">
+        <span class="section-number">01 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">&lt;/&gt;</span> About Enigma 5.0</h2>
+        <span class="header-metadata">[SYS_VAL: ACTIVE_CORE]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Where bold ideas meet relentless execution — a hackathon designed for
+        those who dare to disrupt.
+      </p>
+
+      <div class="about-grid">
+        <!-- Left — text description -->
+        <div class="about-text reveal-left">
+          <h3>What is Enigma?</h3>
+          <p>
+            <strong>Enigma 5.0</strong> is the fifth edition of CSI's flagship
+            national-level hackathon — a 12-hour marathon of innovation, design,
+            and code. Teams of undergraduate students come together to build
+            working prototypes that solve real-world problems across two carefully
+            curated tracks.
+          </p>
+          <p>
+            Whether you're a seasoned coder or a first-time hacker,
+            Enigma is your arena. Mentors from the industry, workshops
+            on cutting-edge tech, and a vibrant community await you.
+          </p>
+          <p class="about-highlight-quote">
+            Form a team of <strong>4 members</strong>, pick your track, and build something extraordinary.
+          </p>
+        </div>
+
+        <!-- Right — quick stats / highlights (Staggered Grid) -->
+        <div class="about-highlights staggered-highlights reveal-right">
+          <div class="highlight-card stagger-1 card-offset-1">
+            <i class="fas fa-clock"></i>
+            <span class="highlight-value">12 hrs</span>
+            <span class="highlight-label">Hacking Time</span>
+          </div>
+          <div class="highlight-card stagger-2 card-offset-2">
+            <i class="fas fa-users"></i>
+            <span class="highlight-value">4</span>
+            <span class="highlight-label">Team Size</span>
+          </div>
+          <div class="highlight-card stagger-3 card-offset-3">
+            <i class="fas fa-code-branch"></i>
+            <span class="highlight-value">2</span>
+            <span class="highlight-label">Tracks</span>
+          </div>
+          <div class="highlight-card stagger-4 card-offset-4">
+            <i class="fas fa-trophy"></i>
+            <span class="highlight-value">₹25K</span>
+            <span class="highlight-label">Prize Pool</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TRACKS SECTION ======================= -->
+  <section class="tracks" id="tracks">
+    <div class="layout-guide-line vertical tracks-guide-1" aria-hidden="true"></div>
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">02 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">_FILE_TABS</span> Hackathon Tracks</h2>
+        <span class="header-metadata">[SYS_TRACK: RUNNING]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Choose your focus area. Each track offers unique, high-stakes development challenges.
+      </p>
+
+      <div class="tracks-grid asymmetric-tracks-grid">
+        <!-- FinTech Card (IDE Window Style) -->
+        <div class="track-card fintech reveal-left stagger-1 terminal-card card-wide">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-tab"><i class="fas fa-file-code"></i> fintech_track.json</div>
+            <div class="terminal-window-meta">[TAB_01: FINTECH]</div>
+          </div>
+          <div class="terminal-body">
+            <div class="code-gutter" aria-hidden="true">
+              <span>01</span>
+              <span>02</span>
+              <span>03</span>
+              <span>04</span>
+              <span>05</span>
+              <span>06</span>
+            </div>
+            <div class="code-content">
+              <div class="track-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>FinTech</h3>
+              <p>
+                Reimagine financial systems with blockchain, digital payment tech, inclusive banking solutions, and high-performance algorithms.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag">DeFi</span>
+                <span class="track-tag">Payments</span>
+                <span class="track-tag">Web3</span>
+                <span class="track-tag">AI/ML</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HealthTech Card (IDE Window Style) -->
+        <div class="track-card healthtech reveal-right stagger-2 terminal-card card-narrow">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-tab"><i class="fas fa-file-code"></i> healthtech_track.json</div>
+            <div class="terminal-window-meta">[TAB_02: HEALTHTECH]</div>
+          </div>
+          <div class="terminal-body">
+            <div class="code-gutter" aria-hidden="true">
+              <span>01</span>
+              <span>02</span>
+              <span>03</span>
+              <span>04</span>
+              <span>05</span>
+              <span>06</span>
+            </div>
+            <div class="code-content">
+              <div class="track-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h3>HealthTech</h3>
+              <p>
+                Build solutions that transform healthcare — from wearable integrations, remote diagnostics, telemedicine, to accessible records.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag">Wearables</span>
+                <span class="track-tag">MedAI</span>
+                <span class="track-tag">Telehealth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PRIZE POOL SECTION ======================= -->
+  <section class="prizes" id="prizes">
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">03 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">[VAL_MATRIX]</span> Prize Pool</h2>
+        <span class="header-metadata">[SYS_PRIZES: SET]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Innovation deserves reward. Compete for glory, recognition, and a substantial prize pool.
+      </p>
+
+      <div class="prize-split-layout">
+        <!-- Left Side: Large spotlight with counter -->
+        <div class="prize-spotlight-column reveal">
+          <div class="prize-spotlight">
+            <div class="prize-amount" aria-label="Prize pool of 25,000 rupees">₹0</div>
+            <p class="prize-label">Total Prize Pool</p>
+            <div class="prize-sub-label">// DISTRIBUTED_REWARDS_MATRIX</div>
+          </div>
+        </div>
+
+        <!-- Right Side: Staggered Tiers -->
+        <div class="prize-cards-column">
+          <!-- 1st Place Card (Full Width Horizontal) -->
+          <div class="prize-tier reveal stagger-1 prize-first-place">
+            <div class="prize-header-meta">
+              <i class="fas fa-crown"></i>
+              <span class="mono-badge">TIER_01 // CHAMPION</span>
+            </div>
+            <div class="prize-tier-content">
+              <h4>1st Place</h4>
+              <p class="amount">₹12,000</p>
+              <p class="goodies">+ Exclusive CSI Goodies &amp; Mentorship</p>
+            </div>
+          </div>
+
+          <div class="prize-sub-grid">
+            <!-- 2nd Place Card -->
+            <div class="prize-tier reveal stagger-2">
+              <i class="fas fa-medal silver-medal"></i>
+              <h4>2nd Place</h4>
+              <p class="amount">₹8,000</p>
+              <p class="goodies">+ Goodies</p>
+            </div>
+            <!-- 3rd Place Card -->
+            <div class="prize-tier reveal stagger-3">
+              <i class="fas fa-award bronze-medal"></i>
+              <h4>3rd Place</h4>
+              <p class="amount">₹5,000</p>
+              <p class="goodies">+ Goodies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= WHY ATTEND SECTION ======================= -->
+  <section class="perks" id="perks">
+    <div class="layout-guide-line horizontal perks-guide-h" aria-hidden="true"></div>
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">04 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">[SYS_PERKS]</span> Event Perks</h2>
+        <span class="header-metadata">[SYS_PERKS: LOADED]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Unlock high-value opportunities, connect with experts, and level up your engineering credentials.
+      </p>
+
+      <div class="perks-split-layout">
+        <!-- Left Side: Staggered Large Featured Cards -->
+        <div class="perks-featured-column reveal-left">
+          <!-- Featured Perk 1: Prize Pool -->
+          <div class="perk-featured-card card-prize-highlight">
+            <div class="perk-card-header">
+              <i class="fas fa-coins text-gold"></i>
+              <span class="mono-badge">[VAL_MATRIX]</span>
+            </div>
+            <h3>Cash Prize Pool</h3>
+            <p>Compete for cash rewards worth ₹25,000 distributed across tracks.</p>
+          </div>
+
+          <!-- Featured Perk 2: Certification -->
+          <div class="perk-featured-card card-cert-highlight">
+            <div class="perk-card-header">
+              <i class="fas fa-file-signature text-purple"></i>
+              <span class="mono-badge">[CSI_CREDENTIALS]</span>
+            </div>
+            <h3>Official Certification</h3>
+            <p>Earn official CSI-recognized certificates for all active participants.</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Terminal Log Screen for Secondary Perks -->
+        <div class="perks-terminal-column reveal-right">
+          <div class="perk-terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="terminal-tab"><i class="fas fa-terminal"></i> why_attend.log</div>
+              <div class="terminal-window-meta">STDOUT // 8_ITEMS</div>
+            </div>
+            
+            <div class="terminal-body perk-logs-body">
+              <!-- Log Line 1: Networking -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">NETWORKING</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Connect with like-minded peers, mentors, and industry professionals.</span>
+              </div>
+              
+              <!-- Log Line 2: Portfolio -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">RESUME_BOOST</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Acquire real-world project experience to showcase to recruiters.</span>
+              </div>
+              
+              <!-- Log Line 3: Food -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">CATERING</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Free food, snacks, and refreshments provided throughout the event.</span>
+              </div>
+              
+              <!-- Log Line 4: Workspace -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">WORKSPACE</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Venue equipped with proper seating, power outlets, and high-speed Wi-Fi.</span>
+              </div>
+              
+              <!-- Log Line 5: Mentorship -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">MENTORSHIP</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Access to industry experts for technical and design guidance.</span>
+              </div>
+              
+              <!-- Log Line 6: Learning -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">LEARNING</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Hands-on exposure to FinTech/HealthTech domains through sprint coding.</span>
+              </div>
+              
+              <!-- Log Line 7: Swag -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">SWAG_GOODIES</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Event merchandise, swag kits, and giveaways for participants.</span>
+              </div>
+              
+              <!-- Log Line 8: Future Scope -->
+              <div class="log-row">
+                <span class="log-status">[ OK ]</span>
+                <span class="log-label">FUTURE_SCOPE</span>
+                <span class="log-divider">::</span>
+                <span class="log-text">Incubation support, internship leads, and post-event recognition.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TIMELINE SECTION ======================= -->
+  <section class="timeline-section" id="timeline">
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">05 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">{LOGS}</span> Event Timeline</h2>
+        <span class="header-metadata">[SYS_TIME: SEQUENCE]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        From registration to the grand finale — here's how Enigma 5.0 unfolds.
+      </p>
+
+      <div class="timeline">
+        <!-- Phase 1 -->
+        <div class="timeline-item reveal stagger-1">
+          <span class="timeline-date">Aug 1 – Aug 20, 2026</span>
+          <h4>Registration Opens</h4>
+          <p>Form your team, choose your track, and register on the official portal. Early-bird perks available.</p>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="timeline-item reveal stagger-2">
+          <span class="timeline-date">Aug 25, 2026</span>
+          <h4>Idea Submission</h4>
+          <p>Submit a one-page abstract of your project idea for preliminary review by mentors and judges.</p>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="timeline-item reveal stagger-3">
+          <span class="timeline-date">Sep 5, 2026</span>
+          <h4>Shortlisting Announced</h4>
+          <p>Top teams from each track are shortlisted and notified. Prep kits and mentorship slots are assigned.</p>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="timeline-item reveal stagger-4">
+          <span class="timeline-date">Sep 13, 2026 — 9:00 AM</span>
+          <h4>Hackathon Kickoff</h4>
+          <p>The 12-hour sprint begins! Opening ceremony, problem statement reveal, and hacking starts.</p>
+        </div>
+        
+        <!-- Phase 5 -->
+        <div class="timeline-item reveal stagger-1">
+          <span class="timeline-date">Sep 13, 2026 — 9:00 PM</span>
+          <h4>Submissions &amp; Judging</h4>
+          <p>Code freeze. Teams submit their projects and present demos to the judging panel.</p>
+        </div>
+        
+        <!-- Phase 6 -->
+        <div class="timeline-item reveal stagger-2">
+          <span class="timeline-date">Sep 13, 2026 — 10:00 PM</span>
+          <h4>Grand Finale &amp; Awards</h4>
+          <p>Top demos, winner announcements, prize distribution, and closing ceremony. 🎉</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT SECTION ======================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="asymmetric-header">
+        <span class="section-number">06 //</span>
+        <h2 class="section-title reveal"><span class="tech-header-tag">COMMS_EST</span> Contact the Team</h2>
+        <span class="header-metadata">[SYS_COMMS: CONNECTED]</span>
+      </div>
+      <p class="section-subtitle reveal stagger-1">
+        Have questions? Reach out to the organizing committee — we'd love to hear from you.
+      </p>
+
+      <div class="contact-grid">
+        <!-- Left column — contact info -->
+        <div class="contact-info reveal-left">
+          <h3>Get in Touch</h3>
+          <p>
+            The Enigma 5.0 organizing team is here to help. Whether you need
+            help with registration, have sponsorship inquiries, or just want
+            to say hello — drop us a line.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:csi-council@siesgst.ac.in" class="contact-link" id="emailLink">
+              <i class="fas fa-envelope"></i>
+              <span>csi-council@siesgst.ac.in</span>
+            </a>
+            <a href="https://csi.siesgst.ac.in/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcATI1jpleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadHK4LaVken5LdL4vmsaalU7ceOyOPvujSaPdNkwIbalyE4Q8qWYHvjJniiZg_aem_TFsKGUmOaE1ORMrr_QfFwA" class="contact-link" target="_blank" rel="noopener noreferrer" id="websiteLink">
+              <i class="fas fa-globe"></i>
+              <span>csi.siesgst.ac.in</span>
+            </a>
+            <a href="https://maps.google.com/?q=SIES+Graduate+School+of+Technology+Nerul+Navi+Mumbai" class="contact-link" target="_blank" rel="noopener noreferrer" id="locationLink">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>SIES Graduate School of Technology, Nerul, Navi Mumbai</span>
+            </a>
+          </div>
+
+          <!-- Social links -->
+          <div class="social-links">
+            <a href="https://www.instagram.com/csisiesgst/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="instagramLink">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/csi-siesgst/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="linkedinLink">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column — contact form -->
+        <form class="contact-form reveal-right" id="contactForm" novalidate>
+          <input type="text" id="formName" placeholder="Your Name" required aria-label="Your Name" />
+          <input type="email" id="formEmail" placeholder="Your Email" required aria-label="Your Email" />
+          <textarea id="formMessage" placeholder="Your Message" required aria-label="Your Message"></textarea>
+          <button type="submit" class="btn btn-red" id="formSubmitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">ENIGMA<span>5.0</span></a>
+          <p>
+            A flagship hackathon by the Computer Society of India (CSI).
+            Empowering the next generation of innovators through code,
+            collaboration, and community.
+          </p>
+        </div>
+
+        <!-- Quick links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="#tracks">Tracks</a>
+          <a href="#prizes">Prize Pool</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#register">Register</a>
+          <a href="#">Rules &amp; Guidelines</a>
+          <a href="#">FAQs</a>
+          <a href="#">Code of Conduct</a>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 <span class="csi-credit">CSI — Computer Society of India</span>.
+          Enigma 5.0. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
