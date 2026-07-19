@@ -32,11 +32,23 @@
     <div class="container">
       <!-- Logo -->
       <a href="#" class="nav-logo" aria-label="Enigma 5.0 Home">
+        <div class="csi-logo-container">
+          <svg class="csi-logo-svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+            <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="var(--green-toxic)" stroke-width="6"/>
+            <line x1="50" y1="5" x2="50" y2="95" stroke="var(--purple-light)" stroke-width="3"/>
+            <line x1="10" y1="28" x2="90" y2="72" stroke="var(--purple-light)" stroke-width="3"/>
+            <line x1="10" y1="72" x2="90" y2="28" stroke="var(--purple-light)" stroke-width="3"/>
+            <circle cx="50" cy="50" r="14" fill="var(--black)" stroke="var(--green-toxic)" stroke-width="3"/>
+            <text x="50" y="54" font-family="var(--font-mono)" font-size="10" font-weight="900" fill="var(--white)" text-anchor="middle">CSI</text>
+          </svg>
+          <span class="csi-divider">|</span>
+        </div>
         ENIGMA<span>5.0</span>
       </a>
 
       <!-- Navigation links -->
       <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <button class="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i></button>
         <a href="#about">About</a>
         <a href="#tracks">Tracks</a>
         <a href="#prizes">Prizes</a>
@@ -88,29 +100,40 @@
     <div class="hero-split-container">
       <!-- Left Column: Oversized Type & Version Tag -->
       <div class="hero-left-col">
+        <div class="hero-organizer-badge reveal">
+          <i class="fas fa-code"></i> A 12-Hour Hackathon Organised by CSI SIES GST
+        </div>
         <h1 class="hero-title">
           ENIGMA
           <span class="version-tag">5.0</span>
         </h1>
         <p class="hero-tagline">// DECODE. BUILD. DISRUPT.</p>
         
-        <!-- Event Console Metadata Badge Grid (Moved here for clean hierarchy) -->
+        <!-- Event Console Metadata Badge Grid (Clean simple language) -->
         <div class="hero-metadata-console reveal stagger-1">
           <div class="console-item">
             <span class="console-key">DATE:</span>
-            <span class="console-val">SEP 13, 2026</span>
+            <span class="console-val">Sept 13, 2026</span>
           </div>
           <div class="console-item">
             <span class="console-key">VENUE:</span>
-            <span class="console-val">SIES GST</span>
+            <span class="console-val">SIES GST, Nerul</span>
+          </div>
+          <div class="console-item">
+            <span class="console-key">TRACKS:</span>
+            <span class="console-val">FinTech &amp; HealthTech</span>
+          </div>
+          <div class="console-item">
+            <span class="console-key">PRIZE POOL:</span>
+            <span class="console-val">₹25,000 Cash</span>
           </div>
           <div class="console-item">
             <span class="console-key">DURATION:</span>
-            <span class="console-val">12 HRS</span>
+            <span class="console-val">12 Hours</span>
           </div>
           <div class="console-item">
             <span class="console-key">TEAM SIZE:</span>
-            <span class="console-val">4 MEMBERS</span>
+            <span class="console-val">4 Members</span>
           </div>
         </div>
 
@@ -701,6 +724,11 @@
             <i class="fas fa-paper-plane"></i> Send Message
           </button>
         </form>
+      </div>
+
+      <!-- SIES GST Location Map (Clean layout map) -->
+      <div class="contact-map-container reveal stagger-3">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4756650888276!2d73.02050307520449!3d19.04281298215493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3db5e2c85cd%3A0xef26c52d7d73816e!2sSIES%20Graduate%20School%20of%20Technology!5e0!3m2!1sen!2sin!4v1784472614634!5m2!1sen!2sin" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </div>
   </section>

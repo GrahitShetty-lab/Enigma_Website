@@ -75,6 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMobileNav);
   });
 
+  // Close nav when close button inside drawer is clicked
+  const navCloseBtn = document.querySelector('.nav-close-btn');
+  if (navCloseBtn) {
+    navCloseBtn.addEventListener('click', closeMobileNav);
+  }
+
   /* ------------------------------------------------------------------
      3. SMOOTH SCROLL for anchor links
      ------------------------------------------------------------------ */

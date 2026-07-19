@@ -365,10 +365,45 @@ img {
 
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.nav-logo span {
   color: var(--green-toxic);
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px var(--green-glow);
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.6);
+  margin-left: 2px;
+}
+
+/* CSI Logo branding styles */
+.csi-logo-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.csi-logo-svg {
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.4));
+  transition: transform var(--transition-fast);
+}
+
+.nav-logo:hover .csi-logo-svg {
+  transform: rotate(-10deg) scale(1.08);
+}
+
+.csi-divider {
+  color: rgba(255, 255, 255, 0.15);
+  margin-left: 10px;
+  margin-right: 12px;
+  font-size: 1.3rem;
+  font-weight: 300;
 }
 
 .nav-logo span {
@@ -410,6 +445,10 @@ img {
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+.nav-close-btn {
+  display: none;
 }
 
 /* Mobile hamburger toggle */
@@ -591,6 +630,23 @@ img {
   margin-bottom: 16px;
 }
 
+/* Hero Organizer Subtitle Badge */
+.hero-organizer-badge {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 2.5vw, 0.82rem);
+  color: var(--purple-light);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+  display: inline-block;
+  background: rgba(155, 89, 208, 0.08);
+  border: 1px solid rgba(155, 89, 208, 0.2);
+  padding: 4px 14px;
+  border-radius: 4px;
+  text-shadow: 0 0 4px rgba(155, 89, 208, 0.2);
+}
+
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(3.2rem, 9.5vw, 6.8rem);
@@ -690,9 +746,9 @@ img {
   padding-bottom: 8px;
 }
 
-/* Remove dashed border on the bottom grid row elements */
-.console-item:nth-child(3),
-.console-item:nth-child(4) {
+/* Remove dashed border on the bottom grid row elements of the 6-item layout */
+.console-item:nth-child(5),
+.console-item:nth-child(6) {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1716,6 +1772,41 @@ img {
   box-shadow: 0 4px 15px rgba(57, 255, 20, 0.12);
 }
 
+/* Contact Google Map Wrapper */
+.contact-map-container {
+  margin-top: 48px;
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(155, 89, 208, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(107, 47, 160, 0.1);
+  transition: border-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.contact-map-container:hover {
+  border-color: rgba(57, 255, 20, 0.35);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(57, 255, 20, 0.15);
+}
+
+.contact-map-container iframe {
+  filter: invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.9); /* Premium dark overlay for the map */
+  opacity: 0.85;
+  transition: opacity var(--transition-medium);
+}
+
+.contact-map-container:hover iframe {
+  opacity: 1;
+}
+
+/* Responsive map height */
+@media (max-width: 640px) {
+  .contact-map-container {
+    height: 260px;
+    margin-top: 32px;
+  }
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -2369,33 +2460,47 @@ img {
 /* ---------- Tablet (≤ 900px) ---------- */
 @media (max-width: 900px) {
 
-  /* Prevent hero content cutoff on height-constrained mobile screens */
+  /* Prevent hero content cutoff and lock scroll on mobile/tablet */
   .hero {
-    min-height: auto;
-    padding: 120px 0 80px 0;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Hero — single column, centered alignment */
+  /* Hero — single column, centered layout filling 100dvh */
   .hero-split-container {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0 24px;
-    margin-top: 80px;
+    gap: 16px;
+    padding: 110px 24px 20px 24px;
+    margin-top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
   }
 
   .hero-left-col {
     align-items: center;
     text-align: center;
+    width: 100%;
   }
 
   .hero-right-col {
     margin-top: 0;
     border-left: none;
-    border-top: 1px dashed rgba(255, 255, 255, 0.05);
-    padding: 24px 0 0 0;
+    border-top: none;
+    padding: 0;
     align-items: center;
     text-align: center;
+    width: 100%;
   }
 
   .hero-tagline {
@@ -2516,6 +2621,19 @@ img {
 /* ---------- Mobile (≤ 640px) ---------- */
 @media (max-width: 640px) {
 
+  body {
+    background-image: 
+      linear-gradient(rgba(57, 255, 20, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 20, 0.04) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E"),
+      linear-gradient(rgba(10, 10, 12, 0.84), rgba(10, 10, 12, 0.84)),
+      url('mobile_bg.png');
+    background-size: 60px 60px, 60px 60px, auto, auto, cover;
+    background-position: center center;
+    background-repeat: repeat, repeat, repeat, no-repeat, no-repeat;
+    background-attachment: fixed;
+  }
+
   :root {
     --section-padding: 72px 0;
   }
@@ -2549,11 +2667,36 @@ img {
     font-size: 1.1rem;
   }
 
+  /* Close button inside mobile menu drawer */
+  .nav-close-btn {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: var(--white-muted);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    padding: 4px;
+    z-index: 1001;
+  }
+
+  .nav-close-btn:hover {
+    color: var(--green-toxic);
+  }
+
   /* Hero adjustments */
+  /* Hero adjustments for strict viewport height */
   .hero-split-container {
-    padding: 0 16px;
-    margin-top: 70px;
-    gap: 20px;
+    padding: 110px 16px 20px 16px;
+    margin-top: 0;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
   }
 
   .hero-title {
@@ -2856,10 +2999,7 @@ img {
     padding: 0 14px;
   }
 
-  .hero-split-container {
-    padding: 0 12px;
-    margin-top: 60px;
-  }
+
 
   .hero-title {
     font-size: clamp(2rem, 16vw, 3rem);
